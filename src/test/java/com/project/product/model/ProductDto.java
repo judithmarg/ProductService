@@ -2,6 +2,7 @@ package com.project.product.model;
 
 
 
+import com.project.product.validator.ProductValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -17,6 +18,12 @@ public class ProductDto {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
+    }
+
+    public ProductDto(ProductValidator productValidator) {
+        this.id = productValidator.getId();
+        this.name = productValidator.getName();
+        this.description = productValidator.getDescription();
     }
 
 

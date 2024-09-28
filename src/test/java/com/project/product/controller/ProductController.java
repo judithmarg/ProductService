@@ -6,6 +6,7 @@ import com.project.product.service.AllProductService;
 import com.project.product.service.CreateProductService;
 import com.project.product.service.GetProductService;
 import com.project.product.service.UpdateProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<String> create(
-            @RequestBody ProductDto productDto
+            @Valid @RequestBody ProductDto productDto
     ) {
         return createProductService.execute(productDto);
     }
