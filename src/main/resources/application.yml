@@ -11,3 +11,5 @@ spring:
     show-sql: true
 server:
   port: 9090
+  error:
+    include-message: always
