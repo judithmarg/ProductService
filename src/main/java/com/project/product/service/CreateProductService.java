@@ -5,7 +5,7 @@ import com.project.product.IProductRepository;
 import com.project.product.exception.ProductBadRequestException;
 import com.project.product.model.Product;
 import com.project.product.model.ProductDto;
-import org.junit.platform.commons.util.StringUtils;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -2,6 +2,7 @@ package com.project.product.model;
 
 
 
+import com.project.product.model.Product;
 import com.project.product.validator.ProductValidator;
 import lombok.AllArgsConstructor;
 import lombok.Data;

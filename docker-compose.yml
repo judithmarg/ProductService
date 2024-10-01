@@ -5,7 +5,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ms_product
     ports:
-      - "3307:3307"
+      - "3307:3306"
     networks:
       - my-network
 networks:

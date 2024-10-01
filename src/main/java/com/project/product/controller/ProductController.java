@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("product")
 public class ProductController {
 
     private final AllProductService allProductService;
@@ -52,6 +53,10 @@ public class ProductController {
     @GetMapping("all")
     public ResponseEntity<List<ProductDto>> index() {
         return this.allProductService.execute(null);
+    }
+    @GetMapping("/test")
+    public String test() {
+        return "Controller is working!";
     }
 
 }
