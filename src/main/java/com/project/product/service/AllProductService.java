@@ -20,7 +20,8 @@ public class AllProductService implements Query<Void,List<ProductDto>> {
     @Override
     public ResponseEntity<List<ProductDto>> execute(Void input) {
         List<Product> products = iProductRepository.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(products.stream().map(ProductDto::new).toList());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(products.stream().map(ProductDto::new).toList());
     }
 }
 

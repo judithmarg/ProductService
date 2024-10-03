@@ -2,8 +2,9 @@ package com.project.product.model;
 
 
 
-import com.project.product.model.Product;
-import com.project.product.validator.ProductValidator;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,22 +12,21 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ProductDto {
-    private final int id;
-    private final String name;
-    private final String description;
+    private Integer id;
+
+    @NotNull(message = "Field name can't be null")
+    @NotBlank(message = "Field name can't be empty")
+    @Size(min = 3, max = 20, message = "The length of product name must be 3 between 20")
+    private String name;
+
+    @Size(max = 200, message = "The description is optional")
+    private String description;
 
     public ProductDto(Product product) {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
     }
-
-    public ProductDto(ProductValidator productValidator) {
-        this.id = productValidator.getId();
-        this.name = productValidator.getName();
-        this.description = productValidator.getDescription();
-    }
-
 
     public Product toProduct() {
         var product = new Product();
