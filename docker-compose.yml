@@ -16,6 +16,46 @@ services:
       PORT: 9090
     networks:
       - my-network
+  ms-fraud:
+    image: ms-fraud:latest
+    ports:
+      - "8084:8084"
+    environment:
+      PORT: 8084
+    networks:
+      - my-network
+  ms-identity:
+    image: ms-identity:latest
+    ports:
+      - "8087:8087"
+    environment:
+      PORT: 8087
+    networks:
+      - my-network
+  ms-payment:
+    image: ms-payment:latest
+    ports:
+      - "8082:8082"
+    environment:
+      PORT: 8082
+    networks:
+      - my-network
+  ms-translate:
+    image: ms-translate:latest
+    ports:
+      - "8081:8081"
+    environment:
+      PORT: 8081
+    networks:
+      - my-network
+  ms-client:
+    image: ms-client:latest
+    ports:
+      - "8083:8083"
+    environment:
+      PORT: 8083
+    networks:
+      - my-network
 networks:
   my-network:
     driver: "bridge"

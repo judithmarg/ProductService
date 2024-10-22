@@ -13,3 +13,14 @@ server:
   port: 9090
   error:
     include-message: always
+springdoc:
+  swagger-ui.path: /openapi/swagger-ui.html
+  api-docs.path: /openapi/v3/api-docs
+  packagesToScan: com.example.product
+  pathsToMatch: /**
+api:
+  responseCodes:
+    ok.description: OK
+    badRequest.description: Bad Request, invalid format of the request. See response message for more information
+    internalServer.description: Internal Server Error. See response message for more information
+

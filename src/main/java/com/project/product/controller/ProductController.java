@@ -1,5 +1,6 @@
 package com.project.product.controller;
 
+import com.project.product.ProductApi;
 import com.project.product.model.ProductDto;
 import com.project.product.model.UpdateProductDto;
 import com.project.product.service.AllProductService;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("product")
-public class ProductController {
+public class ProductController implements ProductApi {
 
     private final AllProductService allProductService;
     private final CreateProductService createProductService;
