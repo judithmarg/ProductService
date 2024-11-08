@@ -9,35 +9,39 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@Tag(name = "Products", description = "Manage product APIs")
+@RequestMapping("/product")
 public interface ProductApi {
-    @Tag( name = "Products", description = "Obtain the product list")
     @Operation(
             summary = "List of products",
             description = "The all products"
     )
-    @ApiResponses(
-            value = {
-                    @ApiResponse(
-                            responseCode = "200", description = "Successful"
-                    ),
-                    @ApiResponse(
-                            responseCode = "500", description = "${api.responseCodes.internalServer.description}",
-                            content = {
-                                    @Content(mediaType = "application/json",
-                                            schema = @Schema(implementation = ErrorResponse.class))
-                            }
-
-                    ),
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200", description = "Successful"
+            ),
+            @ApiResponse(
+                    responseCode = "500", description = "Error",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = ErrorResponse.class))
+                    }),
             }
     )
+    @GetMapping("/all")
     ResponseEntity<List<ProductDto>> index();
 
-    @Tag(name = "Products", description = "Obtain one product by id")
+    @Operation(summary = "Get a product by ID", description = "Retrieve a product based on its ID")
+    @GetMapping("/{id}")
     ResponseEntity<ProductDto> obtain(Integer id);
 
-    @Tag(name = "Products", description = "Create product")
+    @Operation(summary = "Create a new product", description = "Add a new product to the catalog")
+    @PostMapping
     ResponseEntity<String> create(ProductDto product);
 }

@@ -31,13 +31,13 @@ public class ProductController implements ProductApi {
         this.getProductService = getProductService;
     }
 
-    @PostMapping
+    @Override
     public ResponseEntity<String> create(
             @Valid @RequestBody ProductDto productDto
     ) {
         return createProductService.execute(productDto);
     }
-    @GetMapping("{id}")
+    @Override
     public ResponseEntity<ProductDto> obtain(@PathVariable Integer id) {
         return this.getProductService.execute(id);
     }
@@ -51,7 +51,7 @@ public class ProductController implements ProductApi {
         return this.updateProductService.execute(new UpdateProductDto(id, productDto));
     }
 
-    @GetMapping("all")
+    @Override
     public ResponseEntity<List<ProductDto>> index() {
         return this.allProductService.execute(null);
     }
