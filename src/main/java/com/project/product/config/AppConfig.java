@@ -2,6 +2,8 @@ package com.project.product.config;
 
 import io.micrometer.observation.ObservationRegistry;
 import io.micrometer.observation.aop.ObservedAspect;
+import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -13,7 +15,9 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+        return builder
+                .interceptors(new RestTemplateLoggingInterceptor())
+                .build();
     }
 
     @Bean

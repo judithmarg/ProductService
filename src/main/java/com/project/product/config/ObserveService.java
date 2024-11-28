@@ -48,7 +48,15 @@ public class ObserveService {
         }
     }
 
-    public void getActiveSpan()  {
+    public void getActiveSpan2()  {
         log.info("Tracer ID " + this.tracer.currentSpan().context().spanId());
+    }
+
+    public void getActiveSpan() {
+        if (tracer != null && tracer.currentSpan() != null) {
+            tracer.currentSpan().name("CustomSpan");
+        } else {
+            throw new IllegalStateException("Tracer or current span is null");
+        }
     }
 }

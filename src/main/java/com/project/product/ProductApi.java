@@ -36,7 +36,6 @@ public interface ProductApi {
     )
     @GetMapping("/all")
     ResponseEntity<List<ProductDto>> index();
-
     @Operation(summary = "Get a product by ID", description = "Retrieve a product based on its ID")
     @GetMapping("/{id}")
     ResponseEntity<ProductDto> obtain(Integer id);

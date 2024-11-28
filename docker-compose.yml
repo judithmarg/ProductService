@@ -37,9 +37,9 @@ services:
   ms-identity:
     image: ms-identity:latest
     ports:
-      - "8087:8087"
+      - "8086:8086"
     environment:
-      PORT: 8087
+      PORT: 8086
     networks:
       - my-network
   ms-payment:
@@ -66,6 +66,13 @@ services:
       PORT: 8083
     networks:
       - my-network
+  apigateway:
+    image: apigateway:latest
+    ports:
+      - "9191:8080"
+    networks:
+      - my-network
+
 networks:
   my-network:
     driver: "bridge"

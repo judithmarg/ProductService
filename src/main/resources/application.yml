@@ -38,5 +38,13 @@ management:
 logging:
   level:
     root: debug
+    org:
+      springframework:
+        web:
+          client:
+            RestTemplate: INFO
+    com:
+      project:
+        product: INFO
   pattern:
     level: "%5p [${spring.application.name:}, %X{traceId:-},%X{spanId:-}]"
