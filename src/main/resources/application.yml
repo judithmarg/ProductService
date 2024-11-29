@@ -1,50 +1,5 @@
 spring:
   application.name: product
-  datasource:
-    url: jdbc:mysql://mysql:3306/ms_product
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-server:
-  port: 9090
-  error:
-    include-message: always
-springdoc:
-  swagger-ui.path: /openapi/swagger-ui.html
-  api-docs.path: /openapi/v3/api-docs
-  packagesToScan: com.project.product
-  pathsToMatch: /**
-api:
-  responseCodes:
-    ok.description: OK
-    badRequest.description: Bad Request, invalid format of the request. See response message for more information
-    internalServer.description: Internal Server Error. See response message for more information
-
-management:
-  endpoint:
-    web:
-      exposure:
-        include: "*"
-  otlp:
-    tracing:
-      endpoint: http://jaeger:4318/v1/traces
-  tracing:
-    sampling:
-      probability: 1.0
-logging:
-  level:
-    root: debug
-    org:
-      springframework:
-        web:
-          client:
-            RestTemplate: INFO
-    com:
-      project:
-        product: INFO
-  pattern:
-    level: "%5p [${spring.application.name:}, %X{traceId:-},%X{spanId:-}]"
+  config:
+    import:
+      - optional:configserver:http://configserver:8880/

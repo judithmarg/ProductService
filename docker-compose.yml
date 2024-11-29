@@ -72,7 +72,12 @@ services:
       - "9191:8080"
     networks:
       - my-network
-
+  configserver:
+    image: configserver:latest
+    ports:
+      - "8888:8888"
+    networks:
+      - my-network
 networks:
   my-network:
     driver: "bridge"
